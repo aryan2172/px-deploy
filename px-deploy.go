@@ -644,7 +644,7 @@ func create_deployment(config Config) int {
 	az network private-dns zone create -g $_AZURE_group -n $_AZURE_group.pxd --output none
 	az network private-dns link vnet create -g $_AZURE_group -n $_AZURE_group -z $_AZURE_group.pxd -v $_AZURE_group -e true --output none
 	_AZURE_subscription=$(az account show --query id --output tsv)
-	echo $(az ad sp create-for-rbac -n $_AZURE_group --query "[appId,password,tenant]" --output tsv 2>/dev/null) | while read _AZURE_client _AZURE_secret _AZURE_tenant ; do
+	echo $(az ad sp create-for-rbac --role contributor --scopes /subscriptions/$_AZURE_subscription -n $_AZURE_group --query "[appId,password,tenant]" --output tsv 2>/dev/null) | while read _AZURE_client _AZURE_secret _AZURE_tenant ; do
 	  echo azure__client: $_AZURE_client
 	  echo azure__secret: $_AZURE_secret
 	  echo azure__tenant: $_AZURE_tenant
