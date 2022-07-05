@@ -64,7 +64,7 @@ Vagrant.configure("2") do |config|
       gcp.subnetwork = "px-subnet"
     end
   elsif yaml['cloud'] == "azure"
-#    ENV['VAGRANT_NO_PARALLEL'] = 'yes'
+    ENV['VAGRANT_NO_PARALLEL'] = 'yes'
     config.vm.box = "azure"
     config.vm.provider :azure do |azure, override|
       azure.tenant_id = yaml['azure__tenant']
