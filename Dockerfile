@@ -11,7 +11,7 @@ RUN tar xzf google-cloud-sdk-338.0.0-linux-x86_64.tar.gz
 RUN rm google-cloud-sdk-338.0.0-linux-x86_64.tar.gz
 RUN ln -s /google-cloud-sdk/bin/gcloud /usr/bin/gcloud
 RUN gcloud components install alpha -q
-RUN rpm -i https://releases.hashicorp.com/vagrant/2.2.9/vagrant_2.2.9_x86_64.rpm
+RUN rpm -i https://releases.hashicorp.com/vagrant/2.2.19/vagrant_2.2.19_x86_64.rpm
 RUN rpm -i https://rpm.releases.hashicorp.com/RHEL/7/x86_64/stable/packer-1.6.5-1.x86_64.rpm
 RUN vagrant plugin install vagrant-google --plugin-version 2.5.0
 RUN vagrant plugin install vagrant-aws
