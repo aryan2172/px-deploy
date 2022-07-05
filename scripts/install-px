@@ -99,7 +99,7 @@ if [ "$operator" != false -a "$platform" != ocp4 ]; then
   while ! kubectl wait --for=condition=ready pod -lname=portworx-operator -n kube-system; do
     sleep 2
   done
-  [ -e /sbin/azure-repo-svc ] && kubectl taint node --all node-role.kubernetes.io/master=:NoSchedule
+  [ -e /sbin/azure-repo-svc ] && kubectl taint node --all node-role.kubernetes.io/master=:NoSchedule-
 fi
 
 if [ "$secrets" = vault ]; then
@@ -113,6 +113,7 @@ fi
 
 if [ "$cloud" = azure ] ; then
   kubectl create secret generic -n kube-system px-azure --from-literal=AZURE_TENANT_ID=$azure__tenant --from-literal=AZURE_CLIENT_ID=$azure__client --from-literal=AZURE_CLIENT_SECRET=$azure__secret
+  kubectl create secret generic -n portworx px-azure --from-literal=AZURE_TENANT_ID=$azure__tenant --from-literal=AZURE_CLIENT_ID=$azure__client --from-literal=AZURE_CLIENT_SECRET=$azure__secret
 fi
 
 if [ "$platform" = aks ]; then
