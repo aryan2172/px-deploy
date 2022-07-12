@@ -327,7 +327,7 @@ func main() {
 				provider = "vsphere"
 			}
 			fmt.Println(White + "Provisioning VMs..." + Reset)
-			vcmd := exec.Command("sh", "-c", "vagrant up --debug --provider " + provider + " 2>&1")
+			vcmd := exec.Command("sh", "-c", "vagrant up --provider " + provider + " 2>&1")
 			stdout, err := vcmd.StdoutPipe()
 			if err != nil {
 				die(err.Error())
