@@ -597,6 +597,7 @@ func create_deployment(config Config) int {
         aws ec2 authorize-security-group-ingress --group-id $_AWS_sg --protocol tcp --port 5900 --cidr 0.0.0.0/0 &
         aws ec2 authorize-security-group-ingress --group-id $_AWS_sg --protocol tcp --port 8080 --cidr 0.0.0.0/0 &
         aws ec2 authorize-security-group-ingress --group-id $_AWS_sg --protocol tcp --port 8443 --cidr 0.0.0.0/0 &
+	aws ec2 authorize-security-group-ingress --group-id $_AWS_sg --protocol tcp --port 9090 --cidr 0.0.0.0/0 &
         aws ec2 authorize-security-group-ingress --group-id $_AWS_sg --protocol tcp --port 30000-32767 --cidr 0.0.0.0/0 &
         aws ec2 authorize-security-group-ingress --group-id $_AWS_sg --protocol all --cidr 192.168.0.0/16 &
         aws ec2 create-tags --resources $_AWS_vpc $_AWS_subnet $_AWS_gw $_AWS_routetable $_AWS_sg --tags Key=px-deploy_name,Value=`+config.Name+` &
