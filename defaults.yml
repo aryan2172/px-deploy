@@ -1,25 +1,25 @@
-cloud: aws
+cloud: gcp
 platform: k8s
 clusters: 1
 nodes: 3
 k8s_version: 1.21.11
-px_version: 2.10.2
+px_version: 2.10.1
 stop_after: 6
 post_script: show-ip
 quiet: false
 
-aws_region: eu-west-1
+aws_region: ap-south-1
 aws_type: t3.large
 aws_ebs: "gp2:50"
 #aws_ebs: "gp2:20 standard:30"
 
-gcp_region: europe-west1
-gcp_zone: b
-gcp_type: n1-standard-2
+gcp_region: asia-south1
+gcp_zone: c
+gcp_type: e2-standard-4
 gcp_disks: "pd-standard:50"
 #gcp_disks: "pd-standard:20 pd-ssd:30"
 
-azure_region: uksouth
+azure_region: centralindia
 azure_type: Standard_B2ms
 azure_disks: "50"
 #azure_disks: "100 200"
